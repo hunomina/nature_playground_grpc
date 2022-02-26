@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package nature.playground;
+
+import "global.proto";
+import "criteria.proto";
+import "plant.proto";
+
+service ForestService {
+    rpc GetForests (Empty) returns (stream Forest);
+    rpc GetForest (NameCriteria) returns (Forest);
+    rpc GetPlants(Forest) returns (stream Plant);
+    rpc AddPlantToForest (AddPlantToForestQuery) returns (ResponseStatus);
+}
+message Forest {
+    string name = 1;
+    repeated Plant plants = 2;
+}
+
+message AddPlantToForestQuery {
+    Plant plant = 1;
+    Forest forest = 2;
+}

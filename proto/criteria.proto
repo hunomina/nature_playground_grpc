@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package nature.playground;
+
+import "global.proto";
+
+message SizeCriteria {
+    Size size = 1;
+}
+
+message NameCriteria {
+    string name = 1;
+}

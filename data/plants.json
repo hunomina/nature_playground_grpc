@@ -1,0 +1,12 @@
+[
+    {
+        "name": "clover",
+        "size": 0,
+        "produces_food": false
+    },
+    {
+        "name": "hemlock",
+        "size": 1,
+        "produces_food": false
+    }
+]

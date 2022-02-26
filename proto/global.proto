@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package nature.playground;
+
+message Empty {}
+
+message ResponseStatus {
+    Status status = 1;
+    string message = 2;
+}
+
+enum Status {
+    OK = 0;
+    ERROR = 1;
+}
+
+enum Size {
+    SMALL = 0;
+    MEDIUM = 1;
+    BIG = 2;
+    GIGANTIC = 3;
+}

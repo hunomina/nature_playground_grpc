@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package nature.playground;
+
+import "global.proto";
+import "criteria.proto";
+
+service PlantService {
+    rpc GetPlants (Empty) returns (stream Plant);
+    rpc GetPlantsBySize (SizeCriteria) returns (stream Plant);
+    rpc GetPlantByName (NameCriteria) returns (Plant);
+    rpc CreatePlant (Plant) returns (Empty);
+}
+
+message Plant {
+    string name = 1;
+    Size size = 2;
+    bool produces_food = 3;
+}

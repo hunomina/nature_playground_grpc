@@ -1,0 +1,45 @@
+version: "3"
+
+networks:
+  app_network:
+
+services:
+  client:
+    image: grpc_rust-client
+    build:
+      target: client
+      context: ../
+      dockerfile: ./.docker/Dockerfile
+    #command: client
+    #networks:
+    #  - app_network
+    ports:
+      - 8700:8888
+    environment:
+#      - SERVER_ADDRESS=proxy:8765 # if using proxy
+      - SERVER_ADDRESS=server:10000 # if not
+    depends_on:
+      - server
+      - proxy
+  server:
+    image: grpc_rust-server
+    build:
+      context: ../
+      target: server
+      dockerfile: ./.docker/Dockerfile
+    ports:
+      - 10000:10000
+    #command: server
+    #networks:
+    #  - app_network
+  #proxy:
+  #  image: mitmproxy/mitmproxy:7.0.4
+  #  tty: true
+  #  ports:
+  #    - 8800:8080
+  #    - 8801:8081 # web UI
+  #  command: mitmweb --web-host 0.0.0.0 --mode reverse:http://server:10000/
+  #  #networks:
+  #  #  - app_network
+  #  depends_on:
+  #    - server

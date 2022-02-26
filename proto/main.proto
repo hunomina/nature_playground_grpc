@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package nature.playground;
+
+import "plant.proto";
+import "forest.proto";
