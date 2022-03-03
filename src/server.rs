@@ -15,7 +15,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let plant_service = MyPlantService::new(storage.all());
 
     let addr = utils::get_server_address();
-    println!("Server starting on {}", addr);
+    println!("Server started on {}", addr);
 
     Server::builder()
         .add_service(PlantServiceServer::new(plant_service))

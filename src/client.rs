@@ -13,11 +13,11 @@ use tonic::transport::Channel;
 
 #[tokio::main]
 async fn main() {
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8888));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8888));
     let make_svc = make_service_fn(|_conn| async { Ok::<_, Infallible>(service_fn(app)) });
     let server = Server::bind(&addr).serve(make_svc);
 
-    println!("Client started at {}", addr);
+    println!("Client started on {}", addr);
 
     // Run this server for... forever!
     if let Err(e) = server.await {
@@ -98,5 +98,5 @@ fn not_found() -> Response<Body> {
 }
 
 fn ok() -> Response<Body> {
-    Response::new("Ok".into())
+    Response::new("".into())
 }
