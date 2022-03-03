@@ -20,7 +20,7 @@ services:
       - SERVER_ADDRESS=server:10000 # if not
     depends_on:
       - server
-      - proxy
+      # - proxy
   server:
     image: grpc_rust-server
     build:
